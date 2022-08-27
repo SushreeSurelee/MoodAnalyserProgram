@@ -16,7 +16,7 @@ namespace MoodAnalyserProgram
         }
         public string AnalyseMood()
         {
-            string happyMood = "Happy", sadMood = "Sad";
+            string happyMood = "happy", sadMood = "sad";
             if (message.ToLower().Contains(happyMood))
             {
                 Console.WriteLine("User is in {0} mood.", happyMood);

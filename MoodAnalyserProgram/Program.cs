@@ -11,7 +11,7 @@ namespace MoodAnalyserProgram
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Mood Analyser Application\n");
-            string msg = "I am in Sad Mood";
+            string msg = "I am in Happy Mood";
             MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
             moodAnalyser.AnalyseMood();
             Console.ReadLine();
