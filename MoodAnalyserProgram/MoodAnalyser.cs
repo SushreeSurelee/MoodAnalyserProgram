@@ -22,10 +22,15 @@ namespace MoodAnalyserProgram
                 Console.WriteLine("User is in {0} mood.", happyMood);
                 return happyMood;
             }
-            else
+            else if(message.ToLower().Contains(sadMood))
             {
                 Console.WriteLine("User is in {0} mood.", sadMood);
                 return sadMood;
+            }
+            else
+            {
+                Console.WriteLine("User is neither happy nor sad");
+                return happyMood;
             }
         }
     }
