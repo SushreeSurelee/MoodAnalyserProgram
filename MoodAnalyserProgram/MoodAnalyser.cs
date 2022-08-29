@@ -16,29 +16,30 @@ namespace MoodAnalyserProgram
         }
         public string AnalyseMood()
         {
-            string happyMood = "happy", sadMood = "sad";
             try
             {
-                if (message.ToLower().Contains(happyMood))
+                if (message.ToLower().Contains("happy"))
                 {
-                    Console.WriteLine("User is in {0} mood.", happyMood);
-                    return happyMood;
+                    return "HAPPY";
                 }
-                else if (message.ToLower().Contains(sadMood))
+                if (message.ToLower().Contains("sad"))
                 {
-                    Console.WriteLine("User is in {0} mood.", sadMood);
-                    return sadMood;
+                    return "SAD";
+                }
+                if (message.Equals(string.Empty)) //"" ,this is not null
+                {
+                    throw new CustomMoodAnalyserException("Message having empty value",CustomMoodAnalyserException.ExceptionTypes.EMPTY_MESSAGE);
                 }
                 else
                 {
-                    Console.WriteLine("User is neither happy nor sad");
-                    return happyMood;
+                    return "HAPPY";
                 }
             }
-            catch(NullReferenceException ex)
+            catch(NullReferenceException)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
                 throw new CustomMoodAnalyserException("Message having null value", CustomMoodAnalyserException.ExceptionTypes.NULL_MESSAGE);
+                //return "HAPPY";
             }
         }
     }

@@ -8,11 +8,11 @@ namespace MoodAnalyserTestProject
     public class MoodAnalyserTestClass
     {
         [TestMethod]
-        [DataRow("I am in Happy Mood", "happy")]
-        [DataRow("I am in Sad Mood", "sad")]
-        [DataRow("I am in Any Mood", "happy")]
+        [DataRow("I am in Happy Mood", "HAPPY")]
+        [DataRow("I am in Sad Mood", "SAD")]
+        [DataRow("I am in Any Mood", "HAPPY")]
         //[DataRow(null, "Object reference not set to an instance of an object.")] //if return ex.Message in null input (exception message)
-        [DataRow(null,"happy")]
+        //[DataRow(null,"HAPPY")]
         public void GivenMessageShouldReturnMood(string msg, string expected)
         {
             //Arrnage
@@ -21,6 +21,23 @@ namespace MoodAnalyserTestProject
             string actual = moodAnalyser.AnalyseMood();
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DataRow("", "Message having empty value")]
+        [DataRow(null, "Message having null value")]
+        public void GivenNullShouldReturnCustomException(string msg, string expected)
+        {
+            
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser(msg);
+                string actual = moodAnalyser.AnalyseMood();
+            }
+            catch(CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
     }
 }
