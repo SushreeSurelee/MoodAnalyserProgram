@@ -17,21 +17,28 @@ namespace MoodAnalyserProgram
         public string AnalyseMood()
         {
             string happyMood = "happy", sadMood = "sad";
-
-            if (message.ToLower().Contains(happyMood))
+            try
             {
-                Console.WriteLine("User is in {0} mood.", happyMood);
-                return happyMood;
+                if (message.ToLower().Contains(happyMood))
+                {
+                    Console.WriteLine("User is in {0} mood.", happyMood);
+                    return happyMood;
+                }
+                else if (message.ToLower().Contains(sadMood))
+                {
+                    Console.WriteLine("User is in {0} mood.", sadMood);
+                    return sadMood;
+                }
+                else
+                {
+                    Console.WriteLine("User is neither happy nor sad");
+                    return happyMood;
+                }
             }
-            else if (message.ToLower().Contains(sadMood))
+            catch(NullReferenceException ex)
             {
-                Console.WriteLine("User is in {0} mood.", sadMood);
-                return sadMood;
-            }
-            else
-            {
-                Console.WriteLine("User is neither happy nor sad");
-                return happyMood;
+                Console.WriteLine(ex.Message);
+                return "happy";
             }
         }
     }
