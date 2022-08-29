@@ -38,7 +38,7 @@ namespace MoodAnalyserProgram
             catch(NullReferenceException ex)
             {
                 Console.WriteLine(ex.Message);
-                return "happy";
+                throw new CustomMoodAnalyserException("Message having null value", CustomMoodAnalyserException.ExceptionTypes.NULL_MESSAGE);
             }
         }
     }
