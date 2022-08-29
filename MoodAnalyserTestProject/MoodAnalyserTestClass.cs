@@ -11,6 +11,7 @@ namespace MoodAnalyserTestProject
         [DataRow("I am in Happy Mood", "happy")]
         [DataRow("I am in Sad Mood", "sad")]
         [DataRow("I am in Any Mood", "happy")]
+        [DataRow(null,"")]
         public void GivenMessageShouldReturnMood(string msg, string expected)
         {
             //Arrnage
