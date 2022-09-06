@@ -9,6 +9,10 @@ namespace MoodAnalyserProgram
     public class MoodAnalyser
     {
         public string message;
+        public MoodAnalyser()
+        {
+            Console.WriteLine("Default Constructor");
+        }
 
         public MoodAnalyser(string msg)
         {
@@ -35,9 +39,9 @@ namespace MoodAnalyserProgram
                     return "HAPPY";
                 }
             }
-            catch(NullReferenceException)
+            catch(NullReferenceException ex)
             {
-                //Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
                 throw new CustomMoodAnalyserException("Message having null value", CustomMoodAnalyserException.ExceptionTypes.NULL_MESSAGE);
                 //return "HAPPY";
             }
