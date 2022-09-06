@@ -42,12 +42,22 @@ namespace MoodAnalyserTestProject
         }
 
         [TestMethod]
-        [TestCategory("Reflection")]
+        [TestCategory("Reflection - Default Constructor")]
         //[DataRow("MoodAnalyserProgram.MoodAnalyser", "MoodAnalyser")]
         public void GivenClassInfoShouldReturnDefaultConstructor()
         {
             object expected = new MoodAnalyser();
             object obj = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyserProgram.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
+        }
+
+        [TestMethod]
+        [TestCategory("Reflection - Default Constructor")]
+        //[DataRow("MoodAnalyserProgram.MoodAnalyser", "MoodAnalyser")]
+        public void GivenClassInfoShouldReturnParameterizedConstructor()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterConstructor("MoodAnalyserProgram.MoodAnalyser", "MoodAnalyser","HAPPY");
             expected.Equals(obj);
         }
     }
